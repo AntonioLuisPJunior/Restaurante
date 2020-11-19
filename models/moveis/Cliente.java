@@ -23,4 +23,23 @@ public class Cliente extends Pessoa{
         this.pagou = pagou;
     }
 
+    @Override
+    public void existir() {
+        System.out.println("Garçom criado");
+    }
+
+    @Override
+    public int exibirStatus() {
+        if       (pagou == false && comeu == false){
+            System.out.println("Estou aguardando o Garçom");
+        } else if(pagou == false && comeu == true){
+            System.out.println("Eu comi");
+        } else if(pagou == true  && comeu == false){
+            System.out.println("Eu fui besta");
+        } else if(pagou == true  && comeu == true) {
+            System.out.println("Eu estou saindo");
+        }
+        return super.exibirStatus();
+    }
+
 }
