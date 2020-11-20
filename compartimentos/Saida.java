@@ -4,38 +4,31 @@ import interfaces.*;
 import models.moveis.*;
 import java.util.ArrayList;
 
-public class Saida implements Status, FuncionamentoPassagem {
+public class Saida implements Status, Movimento {
 
-    private ArrayList<Pessoa> filaSaida = new ArrayList<>();
+    private static ArrayList<Pessoa> filaSaida = new ArrayList<>();
 
-    public Saida(){
+    public Saida() {
         existir();
     }
 
-    //getters setters
-    public ArrayList<Pessoa> getFilaSaida() {
+    // getters setters
+    public static ArrayList<Pessoa> getFilaSaida() {
         return filaSaida;
     }
 
-    public void setFilaSaida(ArrayList<Pessoa> filaSaida) {
-        this.filaSaida = filaSaida;
+    public static void setFilaSaida(ArrayList<Pessoa> filaSaida) {
+        Saida.filaSaida = filaSaida;
     }
 
+    // metodos para classe
+
+    // fim metodos para classe
+
+    // metodos das interfaces
     @Override
     public void existir() {
-        System.out.println("Saída criada");
-    }
-
-    @Override
-    public void entrar(Cliente cliente) {
-        filaSaida.add(cliente);
-    }
-
-    @Override
-    public Pessoa sair() {
-        Pessoa clienteTemp = filaSaida.get(0);
-        filaSaida.remove(0);
-        return clienteTemp;
+        System.out.println("Saída aberta");
     }
 
     @Override
@@ -45,5 +38,25 @@ public class Saida implements Status, FuncionamentoPassagem {
         return quantidade;
     }
 
-    
+    @Override
+    public void entrar(Cliente cliente) {
+        filaSaida.add(cliente);
+    }
+
+    @Override
+    public Pessoa sair() {
+        if (!filaSaida.isEmpty()){
+            Pessoa temporario = filaSaida.get(0);
+            filaSaida.remove(0);
+            return temporario;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public Pessoa movimentar() {
+        return sair();
+    }
+    // fim metodos das interfaces
 }

@@ -2,7 +2,8 @@ package interfaces;
 
 import models.moveis.*;
 
-public interface FuncionamentoPassagem {
+public interface Movimento {
     void entrar(Cliente cliente);
     Pessoa sair();
+    Pessoa movimentar();
 }

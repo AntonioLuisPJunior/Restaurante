@@ -7,18 +7,17 @@ public class Garcom extends Pessoa{
     public Garcom(int id){
         super(id);
     }
-
-    //getters setters
     public boolean getServindo() {
         return servindo;
     }
     public void setServindo(boolean servindo) {
         this.servindo = servindo;
     }
-
+    
+    // metodos da interface
     @Override
     public void existir() {
-        System.out.println("Garçom criado");
+        System.out.println("Garçom aberto");
     }
 
     @Override
@@ -26,5 +25,6 @@ public class Garcom extends Pessoa{
         System.out.println("Estou " + (servindo?"Servido":"Aguardando um Cliente"));
         return super.exibirStatus();
     }
+    //fim metodos da interface
 
 }

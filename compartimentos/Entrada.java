@@ -4,7 +4,7 @@ import models.moveis.*;
 import interfaces.*;
 import java.util.ArrayList;
 
-public class Entrada implements Status, FuncionamentoPassagem {
+public class Entrada implements Status, Movimento, ConstantesEntrada {
 
     private ArrayList<Cliente> filaEntrada = new ArrayList<>();
 
@@ -12,7 +12,7 @@ public class Entrada implements Status, FuncionamentoPassagem {
         existir();
     }
 
-    //getters setters
+    // getters setters
     public ArrayList<Cliente> getFilaEntrada() {
         return filaEntrada;
     }
@@ -20,17 +20,23 @@ public class Entrada implements Status, FuncionamentoPassagem {
     public void setFilaEntrada(ArrayList<Cliente> filaEntrada) {
         this.filaEntrada = filaEntrada;
     }
-    
+    // fim getters setters
+
+    // metodos para classe
+
+    // fim metodos para classe
+
+    // metodos para interfaces
     @Override
     public void existir() {
-        System.out.println("Entrada criada");
+        System.out.println("Entrada aberta");
     }
-    
+
     @Override
     public int exibirStatus() {
         int quantidade = filaEntrada.size();
         System.out.println("Existem " + quantidade + " pessoas na fila esperando vaga no salão");
-        return quantidade;  
+        return quantidade;
     }
 
     @Override
@@ -40,10 +46,18 @@ public class Entrada implements Status, FuncionamentoPassagem {
 
     @Override
     public Pessoa sair() {
-        Cliente clienteTemp = filaEntrada.get(0);
-        filaEntrada.remove(0);
-        return (Pessoa)clienteTemp;
+        if (!filaEntrada.isEmpty()){
+            Pessoa temporario = filaEntrada.get(0);
+            filaEntrada.remove(0);
+            return temporario;
+        }
+        return null;
     }
-    
-}
 
+    @Override
+    public Pessoa movimentar() {
+        return sair();
+    }
+    // fim metodos para interfaces
+
+}
