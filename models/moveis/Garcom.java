@@ -22,7 +22,7 @@ public class Garcom extends Pessoa{
 
     @Override
     public int exibirStatus() {
-        System.out.println("Estou " + (servindo?"Servido":"Aguardando um Cliente"));
+        System.out.println("\tESTOU " + (servindo ? "SERVINDO" : "AGUARDANDO CLIENTE"));
         return super.exibirStatus();
     }
     //fim metodos da interface

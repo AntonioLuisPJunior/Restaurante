@@ -30,19 +30,19 @@ public class Saida implements Status, Movimento {
     // metodos das interfaces
     @Override
     public void existir() {
-        System.out.println("Saída aberta");
+        System.out.println("SAIDA LIVRE");
     }
 
     @Override
     public int exibirStatus() {
         int quantidade = filaSaida.size();
-        System.out.println("Já saíram " + sairam + " pessoas do restaurante");
+        System.out.println("TOTAL DE PESSOAS QUE SAIRAM DO RESTAURANTE: " + sairam);
         return quantidade;
     }
 
     @Override
     public void entrar(Cliente cliente) {
-        System.out.println(";@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ eNTROU GENTE NA FILA DE SAIDA");
+        System.out.println("UMA PESSOA ENTROU NA FILA PARA SAIDA DO RESTAURANTE");
         filaSaida.add(cliente);
     }
 

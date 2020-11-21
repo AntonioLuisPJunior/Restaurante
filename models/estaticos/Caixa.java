@@ -56,7 +56,7 @@ public class Caixa implements Status, Movimento, ConstantesPagamento {
         int quantidade = clientesAPagar.size();
         if (clientePagando != null)
             quantidade++;
-        System.out.println("Existem " + quantidade + " pessoas nesse caixa do restaurante");
+        System.out.println("\tEXISTEM " + quantidade + " PESSOAS NESSE CAIXA");
         return quantidade;
     }
 
@@ -90,7 +90,7 @@ public class Caixa implements Status, Movimento, ConstantesPagamento {
                 timer.schedule(new TimerTask() {
                     public void run() {
                         pagou();
-                        System.out.println("****** ACABEI DE PAGAR *******");
+                        System.out.println("UM CLIENTE PAGOU A CONTA");
                     }
                 }, TEMPOMAXPAGAMENTO);
                 timer = null;

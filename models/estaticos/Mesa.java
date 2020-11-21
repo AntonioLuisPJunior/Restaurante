@@ -37,7 +37,7 @@ public class Mesa implements Status, Movimento, VerificarCadeira {
         for (Cadeira cadeira : cadeiras) {
             quantidade += cadeira.exibirStatus();
         }
-        System.out.println("Existem " + quantidade + " pessoas nessa mesa do restaurante");
+        System.out.println("\tEXISTEM " + quantidade + " PESSOAS NESSA MESA");
         return quantidade;
     }
 

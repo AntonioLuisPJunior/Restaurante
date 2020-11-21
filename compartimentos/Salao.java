@@ -67,7 +67,7 @@ public class Salao implements Status, Movimento, VerificarCadeira {
     // metodos para interfaces
     @Override
     public void existir() {
-        System.out.println("Salão aberto");
+        System.out.println("SALAO LIBERADO");
     }
 
     @Override
@@ -75,19 +75,19 @@ public class Salao implements Status, Movimento, VerificarCadeira {
         int quantidade = 0;
         int i = 1;
         for (Garcom garcom : garcons) {
-            System.out.println("Garcom " + i);
+            System.out.print("GARCOM " + i + ":");
             quantidade += garcom.exibirStatus();
             i++;
         }
         i = 1;
         for (Mesa mesa : mesas) {
-            System.out.println("Mesa " + i);
+            System.out.print("MESA   " + i + ":");
             quantidade += mesa.exibirStatus();
             i++;
         }
         i = 1;
         for (Caixa caixa : caixas) {
-            System.out.println("Caixa " + i);
+            System.out.print("CAIXA  " + i + ":");
             quantidade += caixa.exibirStatus();
             i++;
         }
@@ -125,7 +125,7 @@ public class Salao implements Status, Movimento, VerificarCadeira {
             Object clienteTemporario;
             clienteTemporario = mesa.movimentar();
             if (clienteTemporario != null) {
-                System.out.println("****************Saiu algem da mesa************");
+                System.out.println("UM CLIENTE ENTROU NA FILA DE PAGAMENTO");
                 // caixas.get(0).entrar((Cliente) clienteTemporario);
                 if (caixas.get(0).getClientesAPagar().size() == caixas.get(1).getClientesAPagar().size()) {
                     caixas.get(0).entrar((Cliente) clienteTemporario);

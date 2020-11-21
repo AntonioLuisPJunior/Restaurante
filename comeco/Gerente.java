@@ -39,7 +39,7 @@ public class Gerente implements Runnable, Status, ConstantesEntrada {
 
     public void iniciar() {
         restaurante = new Restaurante();
-        System.out.println("Bem vindo ao Restaurante");
+        System.out.println("\t\tBEM VINDO AO RESTAURANTE");
         this.id = restaurante.getSalao().quantidadeGarcons() + 1;
     }
 

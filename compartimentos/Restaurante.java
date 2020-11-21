@@ -49,7 +49,7 @@ public class Restaurante implements Status, Movimento, VerificarCadeira, Constan
     // metodos das interfaces
     @Override
     public void existir() {
-        System.out.println("Restaurante aberto");
+        System.out.println("RESTAURANTE ABERTO");
     }
 
     @Override
@@ -58,11 +58,11 @@ public class Restaurante implements Status, Movimento, VerificarCadeira, Constan
         for (int i = 0; i<10 ; i++){
             System.out.println("");
         }
-        System.out.println("- - - - - - - - - - - - - - - - - - -");
-        System.out.println("No momento o restaurante esta:");
+        System.out.println("__________________________________________________________");
+        System.out.println("\t\tSTATUS DO RESTAURANTE");
         quantidade += entrada.exibirStatus();
         quantidade += salao.exibirStatus();
-        System.out.println("Com um total de " + quantidade + " pessoas");
+        System.out.println("TOTAL DE PESSOAS NO RESTAURANTE: " + quantidade);
         saida.exibirStatus();
         return quantidade;
     }
@@ -91,7 +91,7 @@ public class Restaurante implements Status, Movimento, VerificarCadeira, Constan
         }
         Object clienteTemporario3 = saida.movimentar();
         if (clienteTemporario3 != null){
-            System.out.println("&&&&&&&&&&&&&&&&&&&&&&saiu alguem*&&&&&&&&&&&&&&&&&&");
+            System.out.println("UMA PESSOA SAIU DO RESTAURANTE");
             return (Cliente) clienteTemporario3;
         }
         return null;

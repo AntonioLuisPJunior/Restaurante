@@ -75,7 +75,7 @@ public class Cadeira implements Status, Movimento, VerificarCadeira, ConstantesC
                 timer.schedule(new TimerTask() {
                     public void run() {
                         comeu();
-                        System.out.println("****** ACABEI DE COMER *******");
+                        System.out.println("UM CLIENTE TERMINOU DE COMER");
                     }
                 }, tempoTotal);
                 timer = null;

@@ -29,13 +29,13 @@ public class Entrada implements Status, Movimento, ConstantesEntrada {
     // metodos para interfaces
     @Override
     public void existir() {
-        System.out.println("Entrada aberta");
+        System.out.println("ENTRADA ABERTA");
     }
 
     @Override
     public int exibirStatus() {
         int quantidade = filaEntrada.size();
-        System.out.println("Existem " + quantidade + " pessoas na fila esperando vaga no salão");
+        System.out.println("ENTRADA :\t" + quantidade + " PESSOAS AGUARDANDO MESA");
         return quantidade;
     }
 
