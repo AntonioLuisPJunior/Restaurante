@@ -4,7 +4,7 @@ import models.moveis.*;
 import interfaces.*;
 import utils.*;
 
-public class Cadeira implements Movimento, VerificarCadeira, ConstantesComida {
+public class Cadeira implements Status, Movimento, VerificarCadeira, ConstantesComida {
 
     private Cliente sentado = null;
 
@@ -25,6 +25,19 @@ public class Cadeira implements Movimento, VerificarCadeira, ConstantesComida {
     // fim metodos da classe
 
     // metodos da interface
+    @Override
+    public void existir() {
+        System.out.println("Eu sou uma cadeira");
+    }
+
+    @Override
+    public int exibirStatus() {
+        int quantidade = 0;
+        if (sentado != null)
+            quantidade = 1;
+        return quantidade;
+    }
+
     public boolean assentosVazios() {
         if (sentado == null)
             return true;
@@ -45,10 +58,12 @@ public class Cadeira implements Movimento, VerificarCadeira, ConstantesComida {
 
     @Override
     public Pessoa movimentar() {
-        // int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO + TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
+        // int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO +
+        // TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
         // Aleatorio.randomico.nextInt(tempoTotal);
         alimentar();
         return sair();
     }
     // fim metodos para interfaces
+
 }

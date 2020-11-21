@@ -33,7 +33,12 @@ public class Mesa implements Status, Movimento, VerificarCadeira {
 
     @Override
     public int exibirStatus() {
-        int quantidade = cadeiras.size();
+        int quantidade = 0;
+        int i = 1;
+        for (Cadeira cadeira : cadeiras) {
+            quantidade += cadeira.exibirStatus();
+            i++;
+        }
         System.out.println("Existem " + quantidade + " pessoas nessa mesa do restaurante");
         return quantidade;
     }

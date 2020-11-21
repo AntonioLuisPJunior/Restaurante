@@ -56,20 +56,15 @@ public class Gerente implements Runnable, Status, ConstantesEntrada {
     @Override
     public void run() {
         iniciar();
-        int fps = 60;
-        double timePerTick = 1000000000 / fps;
-        double delta = 0;
-        long now;
-        long lastTime = System.nanoTime();
         while (aberto) {
-            now = System.nanoTime();
-            delta += (now - lastTime) / timePerTick;
-            lastTime = now;
             int id = 1;
             tick(id);
-            if (delta >= 1) {
+            try {
+                Thread.sleep(Aleatorio.randomico.nextInt(TEMPOMAXENTRADA));
                 render();
-                delta--;
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
         stop();
