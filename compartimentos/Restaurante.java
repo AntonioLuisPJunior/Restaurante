@@ -9,7 +9,6 @@ public class Restaurante implements Status, Movimento, VerificarCadeira, Constan
     private Saida saida;
     private Salao salao;
 
-    private int teste;
     public Restaurante() {
         existir();        
         entrada = new Entrada();
@@ -63,11 +62,8 @@ public class Restaurante implements Status, Movimento, VerificarCadeira, Constan
         System.out.println("No momento o restaurante esta:");
         quantidade += entrada.exibirStatus();
         quantidade += salao.exibirStatus();
-        int teste = saida.exibirStatus();
-        this.teste += teste;
-        quantidade += teste;
         System.out.println("Com um total de " + quantidade + " pessoas");
-        System.out.println("Ja sairam desde restaurante " + this.teste + " pessoas");
+        saida.exibirStatus();
         return quantidade;
     }
 

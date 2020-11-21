@@ -8,6 +8,8 @@ public class Saida implements Status, Movimento {
 
     private static ArrayList<Pessoa> filaSaida = new ArrayList<>();
 
+    private int sairam = 0;
+
     public Saida() {
         existir();
     }
@@ -34,7 +36,7 @@ public class Saida implements Status, Movimento {
     @Override
     public int exibirStatus() {
         int quantidade = filaSaida.size();
-        System.out.println("Existem " + quantidade + " pessoas saindo do restaurante");
+        System.out.println("Já saíram " + sairam + " pessoas do restaurante");
         return quantidade;
     }
 
@@ -49,6 +51,7 @@ public class Saida implements Status, Movimento {
         if (!filaSaida.isEmpty()){
             Pessoa temporario = filaSaida.get(0);
             filaSaida.remove(0);
+            sairam ++;
             return temporario;
         } else {
             return null;
