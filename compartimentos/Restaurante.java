@@ -95,10 +95,7 @@ public class Restaurante implements Status, Movimento, VerificarCadeira, Constan
                 saida.entrar(clienteTemporario2);
             }
         }
-        if (saida.movimentar() != null) {
-            return saida.movimentar();
-        }
-        return null;
+        return saida.movimentar();
     }
 
     @Override
