@@ -9,6 +9,7 @@ public class Cliente extends Pessoa {
 
     public Cliente() {
     }
+
     public Cliente(int id) {
         super(id);
     }
@@ -47,7 +48,7 @@ public class Cliente extends Pessoa {
     }
     // fim getters setters
 
-    //metodos interfaces
+    // metodos interfaces
     @Override
     public void existir() {
         System.out.println("Garçom aberto");
@@ -66,6 +67,6 @@ public class Cliente extends Pessoa {
         }
         return super.exibirStatus();
     }
-    //metodos interfaces
+    // metodos interfaces
 
 }

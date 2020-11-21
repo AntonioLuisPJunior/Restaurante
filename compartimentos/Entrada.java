@@ -46,7 +46,7 @@ public class Entrada implements Status, Movimento, ConstantesEntrada {
 
     @Override
     public Pessoa sair() {
-        if (!filaEntrada.isEmpty()){
+        if (!filaEntrada.isEmpty()) {
             Pessoa temporario = filaEntrada.get(0);
             filaEntrada.remove(0);
             return temporario;

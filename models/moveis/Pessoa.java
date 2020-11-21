@@ -8,21 +8,25 @@ public abstract class Pessoa implements Status {
     protected int id;
     protected String nome = Aleatorio.nomeAleatorio();
 
-    public Pessoa(){
+    public Pessoa() {
     }
-    public Pessoa(int id){
+
+    public Pessoa(int id) {
         this.id = id;
     }
-    
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -37,6 +41,6 @@ public abstract class Pessoa implements Status {
     public int exibirStatus() {
         return 1;
     }
-    //fim metodos da interface
+    // fim metodos da interface
 
 }

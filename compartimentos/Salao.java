@@ -107,9 +107,6 @@ public class Salao implements Status, Movimento, VerificarCadeira {
     @Override
     public Pessoa sair() {
         for (Caixa caixa : caixas) {
-            // if (caixa.getClientePagando() != null && caixa.getClientePagando().getPagou()) {
-            //     return caixa.sair();
-            // }
             Object clienteTemporario;
             clienteTemporario = caixa.movimentar();
             if (clienteTemporario != null) {
@@ -126,7 +123,6 @@ public class Salao implements Status, Movimento, VerificarCadeira {
             clienteTemporario = mesa.movimentar();
             if (clienteTemporario != null) {
                 System.out.println("UM CLIENTE ENTROU NA FILA DE PAGAMENTO");
-                // caixas.get(0).entrar((Cliente) clienteTemporario);
                 if (caixas.get(0).getClientesAPagar().size() == caixas.get(1).getClientesAPagar().size()) {
                     caixas.get(0).entrar((Cliente) clienteTemporario);
                 } else if (caixas.get(0).getClientesAPagar().size() > caixas.get(1).getClientesAPagar().size()) {
@@ -136,12 +132,6 @@ public class Salao implements Status, Movimento, VerificarCadeira {
                 }
             }
         }
-        // for (Caixa caixa : caixas) {
-        //     // if(caixa.getClientePagando() != null && caixa.getClientePagando().isPagando()
-        //     // == false){
-        //     caixa.movimentar();
-        //     // }
-        // }
         return sair();
     }
 
