@@ -54,20 +54,25 @@ public class Mesa implements Status, Movimento, VerificarCadeira {
     @Override
     public Pessoa sair() {
         for (Cadeira cadeira : cadeiras) {
-            if (cadeira.getSentado() != null && cadeira.getSentado().getComeu()) {
-                return cadeira.sair();
+            Object clienteTemporario;
+            clienteTemporario = cadeira.movimentar();
+            if (clienteTemporario != null) {
+                return (Cliente) clienteTemporario;
             }
+            // if (cadeira.getSentado() != null && cadeira.getSentado().getComeu()) {
+            //     return cadeira.sair();
+            // }
         }
         return null;
     }
 
     @Override
     public Pessoa movimentar() {
-        for (Cadeira cadeira : cadeiras) {
-            if(cadeira.getSentado() != null && cadeira.getSentado().isComendo() == false){
-                cadeira.movimentar();
-            }
-        }
+        // for (Cadeira cadeira : cadeiras) {
+        //     if(cadeira.getSentado() != null && cadeira.getSentado().isComendo() == false){
+        //         cadeira.movimentar();
+        //     }
+        // }
         return sair();
     }
 

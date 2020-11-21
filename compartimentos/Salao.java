@@ -107,8 +107,13 @@ public class Salao implements Status, Movimento, VerificarCadeira {
     @Override
     public Pessoa sair() {
         for (Caixa caixa : caixas) {
-            if (caixa.getClientePagando() != null && caixa.getClientePagando().getPagou()) {
-                return caixa.sair();
+            // if (caixa.getClientePagando() != null && caixa.getClientePagando().getPagou()) {
+            //     return caixa.sair();
+            // }
+            Object clienteTemporario;
+            clienteTemporario = caixa.movimentar();
+            if (clienteTemporario != null) {
+                return (Cliente) clienteTemporario;
             }
         }
         return null;
@@ -117,25 +122,26 @@ public class Salao implements Status, Movimento, VerificarCadeira {
     @Override
     public Pessoa movimentar() {
         for (Mesa mesa : mesas) {
-            Cliente clienteTemporario;
-            clienteTemporario = (Cliente) mesa.movimentar();
+            Object clienteTemporario;
+            clienteTemporario = mesa.movimentar();
             if (clienteTemporario != null) {
-
-                caixas.get(0).entrar(clienteTemporario);
-                // if (caixas.get(0).getClientesAPagar().size() == caixas.get(1).getClientesAPagar().size()) {
-                //     caixas.get(0).entrar(clienteTemporario);
-                // } else if (caixas.get(0).getClientesAPagar().size() > caixas.get(1).getClientesAPagar().size()) {
-                //     caixas.get(1).entrar(clienteTemporario);
-                // } else if (caixas.get(0).getClientesAPagar().size() < caixas.get(1).getClientesAPagar().size()) {
-                //     caixas.get(0).entrar(clienteTemporario);
-                // }
+                System.out.println("****************Saiu algem da mesa************");
+                // caixas.get(0).entrar((Cliente) clienteTemporario);
+                if (caixas.get(0).getClientesAPagar().size() == caixas.get(1).getClientesAPagar().size()) {
+                    caixas.get(0).entrar((Cliente) clienteTemporario);
+                } else if (caixas.get(0).getClientesAPagar().size() > caixas.get(1).getClientesAPagar().size()) {
+                    caixas.get(1).entrar((Cliente) clienteTemporario);
+                } else if (caixas.get(0).getClientesAPagar().size() < caixas.get(1).getClientesAPagar().size()) {
+                    caixas.get(0).entrar((Cliente) clienteTemporario);
+                }
             }
         }
-        for (Caixa caixa : caixas) {
-            // if(caixa.getClientePagando() != null && caixa.getClientePagando().isPagando() == false){
-                caixa.movimentar();
-            // }
-        }
+        // for (Caixa caixa : caixas) {
+        //     // if(caixa.getClientePagando() != null && caixa.getClientePagando().isPagando()
+        //     // == false){
+        //     caixa.movimentar();
+        //     // }
+        // }
         return sair();
     }
 

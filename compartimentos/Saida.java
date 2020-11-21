@@ -40,6 +40,7 @@ public class Saida implements Status, Movimento {
 
     @Override
     public void entrar(Cliente cliente) {
+        System.out.println(";@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ eNTROU GENTE NA FILA DE SAIDA");
         filaSaida.add(cliente);
     }
 

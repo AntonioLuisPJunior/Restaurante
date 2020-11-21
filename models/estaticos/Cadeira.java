@@ -65,19 +65,23 @@ public class Cadeira implements Status, Movimento, VerificarCadeira, ConstantesC
 
     @Override
     public Pessoa movimentar() {
-        if (sentado.getComeu())
-            return sair();
-        if (!sentado.isComendo()) {
-            comendo();
-            int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO + TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
-            timer = new Timer();
-            timer.schedule(new TimerTask() {
-                public void run() {
-                    comeu();
-                    System.out.println("****** ACABEI DE COMER *******");
-                }
-            }, tempoTotal);
-            timer = null;
+        if (sentado != null) {
+            if (sentado.getComeu())
+                return sair();
+            if (!sentado.isComendo()) {
+                comendo();
+                int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO + TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    public void run() {
+                        comeu();
+                        System.out.println("****** ACABEI DE COMER *******");
+                    }
+                }, tempoTotal);
+                timer = null;
+                return null;
+            }
+            return null;
         }
         return null;
     }

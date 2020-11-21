@@ -78,6 +78,7 @@ public class Caixa implements Status, Movimento, ConstantesPagamento {
             if (!clientesAPagar.isEmpty()) {
                 this.clientePagando = clientesAPagar.get(0);
                 clientesAPagar.remove(0);
+                return null;
             }
             return null;
         } else {
@@ -93,6 +94,7 @@ public class Caixa implements Status, Movimento, ConstantesPagamento {
                     }
                 }, TEMPOMAXPAGAMENTO);
                 timer = null;
+                return null;
             }
             return null;
         }
