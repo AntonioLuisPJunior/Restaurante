@@ -87,7 +87,7 @@ public class Restaurante implements Status, Movimento, VerificarCadeira, Constan
             Cliente clienteTemporario2 = (Cliente) salao.sair();
             saida.entrar(clienteTemporario2);
         }
-        if (salao.sair() != null) {
+        if (saida.sair() != null) {
             return saida.sair();
         }
         return null;
