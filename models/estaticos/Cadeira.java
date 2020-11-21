@@ -61,8 +61,9 @@ public class Cadeira implements Status, Movimento, VerificarCadeira, ConstantesC
         // int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO +
         // TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
         // Aleatorio.randomico.nextInt(tempoTotal);
-        alimentar();
-        return sair();
+        sentado.setComeu(true);
+        return null;
+        // alimentar();
     }
     // fim metodos para interfaces
 

@@ -57,7 +57,7 @@ public class Mesa implements Status, Movimento, VerificarCadeira {
     public Pessoa sair() {
         for (Cadeira cadeira : cadeiras) {
             if (cadeira.getSentado() != null && cadeira.getSentado().getComeu()) {
-                return cadeira.movimentar();
+                return cadeira.sair();
             }
         }
         return null;
@@ -65,6 +65,10 @@ public class Mesa implements Status, Movimento, VerificarCadeira {
 
     @Override
     public Pessoa movimentar() {
+        for (Cadeira cadeira : cadeiras) {
+            if(cadeira.getSentado() != null)
+                cadeira.movimentar();
+        }
         return sair();
     }
 
