@@ -107,8 +107,8 @@ public class Salao implements Status, Movimento, VerificarCadeira {
     @Override
     public Pessoa sair() {
         for (Caixa caixa : caixas) {
-            if (caixa.sair() != null)
-                return caixa.sair();
+            if (caixa.movimentar() != null)
+                return caixa.movimentar();
         }
         return null;
     }
@@ -116,9 +116,9 @@ public class Salao implements Status, Movimento, VerificarCadeira {
     @Override
     public Pessoa movimentar() {
         for (Mesa mesa : mesas) {
-            if (mesa.sair() != null) {
+            if (mesa.movimentar() != null) {
                 Cliente clienteTemporario;
-                clienteTemporario = (Cliente) mesa.sair();
+                clienteTemporario = (Cliente) mesa.movimentar();
                 if (caixas.get(0).getClientesAPagar().size() == caixas.get(1).getClientesAPagar().size()) {
                     caixas.get(0).entrar(clienteTemporario);
                 } else if (caixas.get(0).getClientesAPagar().size() > caixas.get(1).getClientesAPagar().size()) {
@@ -128,12 +128,7 @@ public class Salao implements Status, Movimento, VerificarCadeira {
                 }
             }
         }
-        for (Caixa caixa : caixas) {
-            if (caixa.sair() != null) {
-                return caixa.sair();
-            }
-        }
-        return null;
+        return sair();
     }
 
     @Override

@@ -74,7 +74,7 @@ public class Caixa implements Status, Movimento, ConstantesPagamento {
             }
             return null;
         } else {
-            Aleatorio.randomico.nextInt(TEMPOMAXPAGAMENTO);
+            // Aleatorio.randomico.nextInt(TEMPOMAXPAGAMENTO);
             pagar();
             return sair();
         }

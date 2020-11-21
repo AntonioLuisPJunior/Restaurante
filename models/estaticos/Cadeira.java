@@ -45,8 +45,8 @@ public class Cadeira implements Movimento, VerificarCadeira, ConstantesComida {
 
     @Override
     public Pessoa movimentar() {
-        int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO + TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
-        Aleatorio.randomico.nextInt(tempoTotal);
+        // int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO + TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
+        // Aleatorio.randomico.nextInt(tempoTotal);
         alimentar();
         return sair();
     }
