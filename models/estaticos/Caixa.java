@@ -2,7 +2,6 @@ package models.estaticos;
 
 import models.moveis.*;
 import interfaces.*;
-import utils.*;
 import java.util.ArrayList;
 import java.util.TimerTask;
 import java.util.Timer;

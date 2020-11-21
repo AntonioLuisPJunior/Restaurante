@@ -1,9 +1,9 @@
 package situacoes;
 
-import models.moveis.*;
+// import models.moveis.*;
 
 public class Atender {
-    private Garcom entrada;
-    private Cliente saida;
+    // private Garcom entrada;
+    // private Cliente saida;
     
 }

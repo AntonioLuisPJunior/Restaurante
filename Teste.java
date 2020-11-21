@@ -1,6 +1,6 @@
 
-import java.util.HashMap;
-import java.util.Random;
+// import java.util.HashMap;
+// import java.util.Random;
 
 //criei pra testar as coisas
 public class Teste {
