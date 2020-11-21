@@ -3,10 +3,13 @@ package models.estaticos;
 import models.moveis.*;
 import interfaces.*;
 import utils.*;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class Cadeira implements Status, Movimento, VerificarCadeira, ConstantesComida {
 
     private Cliente sentado = null;
+    public Timer timer;
 
     // getters setters
     public Cliente getSentado() {
@@ -19,7 +22,12 @@ public class Cadeira implements Status, Movimento, VerificarCadeira, ConstantesC
     // fim getters setters
 
     // metodos da classe
-    public void alimentar() {
+    public void comendo() {
+        sentado.setComendo(true);
+    }
+
+    public void comeu() {
+        sentado.setComendo(false);
         sentado.setComeu(true);
     }
     // fim metodos da classe
@@ -58,12 +66,21 @@ public class Cadeira implements Status, Movimento, VerificarCadeira, ConstantesC
 
     @Override
     public Pessoa movimentar() {
-        // int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO +
-        // TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
-        // Aleatorio.randomico.nextInt(tempoTotal);
-        sentado.setComeu(true);
+        if (sentado.getComeu())
+            return sair();
+        if (!sentado.isComendo()) {
+            comendo();
+            int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO + TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                public void run() {
+                    comeu();
+                    System.out.println("****** ACABEI DE COMER *******");
+                }
+            }, tempoTotal);
+            timer = null;
+        }
         return null;
-        // alimentar();
     }
     // fim metodos para interfaces
 

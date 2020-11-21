@@ -8,6 +8,8 @@ public abstract class Pessoa implements Status {
     protected int id;
     protected String nome = Aleatorio.nomeAleatorio();
 
+    public Pessoa(){
+    }
     public Pessoa(int id){
         this.id = id;
     }

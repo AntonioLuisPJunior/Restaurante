@@ -4,9 +4,11 @@ public class Cliente extends Pessoa {
 
     private boolean comeu = false;
     private boolean pagou = false;
-    // private boolean entrando = true;
-    // private boolean saindo = false;
+    private boolean comendo = false;
+    private boolean pagando = false;
 
+    public Cliente() {
+    }
     public Cliente(int id) {
         super(id);
     }
@@ -28,21 +30,21 @@ public class Cliente extends Pessoa {
         this.pagou = pagou;
     }
 
-    // public boolean isSaindo() {
-    //     return saindo;
-    // }
+    public boolean isPagando() {
+        return pagando;
+    }
 
-    // public void setSaindo(boolean saindo) {
-    //     this.saindo = saindo;
-    // }
+    public void setPagando(boolean pagando) {
+        this.pagando = pagando;
+    }
 
-    // public boolean isEntrando() {
-    //     return entrando;
-    // }
+    public boolean isComendo() {
+        return comendo;
+    }
 
-    // public void setEntrando(boolean entrando) {
-    //     this.entrando = entrando;
-    // }
+    public void setComendo(boolean comendo) {
+        this.comendo = comendo;
+    }
     // fim getters setters
 
     //metodos interfaces

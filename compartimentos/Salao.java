@@ -107,8 +107,9 @@ public class Salao implements Status, Movimento, VerificarCadeira {
     @Override
     public Pessoa sair() {
         for (Caixa caixa : caixas) {
-            if (caixa.movimentar() != null)
-                return caixa.movimentar();
+            if (caixa.getClientePagando() != null && caixa.getClientePagando().getPagou()) {
+                return caixa.sair();
+            }
         }
         return null;
     }
@@ -116,17 +117,24 @@ public class Salao implements Status, Movimento, VerificarCadeira {
     @Override
     public Pessoa movimentar() {
         for (Mesa mesa : mesas) {
-            if (mesa.movimentar() != null) {
-                Cliente clienteTemporario;
-                clienteTemporario = (Cliente) mesa.movimentar();
-                if (caixas.get(0).getClientesAPagar().size() == caixas.get(1).getClientesAPagar().size()) {
-                    caixas.get(0).entrar(clienteTemporario);
-                } else if (caixas.get(0).getClientesAPagar().size() > caixas.get(1).getClientesAPagar().size()) {
-                    caixas.get(1).entrar(clienteTemporario);
-                } else if (caixas.get(0).getClientesAPagar().size() < caixas.get(1).getClientesAPagar().size()) {
-                    caixas.get(0).entrar(clienteTemporario);
-                }
+            Cliente clienteTemporario;
+            clienteTemporario = (Cliente) mesa.movimentar();
+            if (clienteTemporario != null) {
+
+                caixas.get(0).entrar(clienteTemporario);
+                // if (caixas.get(0).getClientesAPagar().size() == caixas.get(1).getClientesAPagar().size()) {
+                //     caixas.get(0).entrar(clienteTemporario);
+                // } else if (caixas.get(0).getClientesAPagar().size() > caixas.get(1).getClientesAPagar().size()) {
+                //     caixas.get(1).entrar(clienteTemporario);
+                // } else if (caixas.get(0).getClientesAPagar().size() < caixas.get(1).getClientesAPagar().size()) {
+                //     caixas.get(0).entrar(clienteTemporario);
+                // }
             }
+        }
+        for (Caixa caixa : caixas) {
+            // if(caixa.getClientePagando() != null && caixa.getClientePagando().isPagando() == false){
+                caixa.movimentar();
+            // }
         }
         return sair();
     }

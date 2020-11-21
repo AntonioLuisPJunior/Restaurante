@@ -4,11 +4,14 @@ import models.moveis.*;
 import interfaces.*;
 import utils.*;
 import java.util.ArrayList;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class Caixa implements Status, Movimento, ConstantesPagamento {
 
     private ArrayList<Cliente> clientesAPagar = new ArrayList<>();
     private Cliente clientePagando = null;
+    public Timer timer;
 
     public Caixa() {
 
@@ -33,7 +36,12 @@ public class Caixa implements Status, Movimento, ConstantesPagamento {
     // fim getters setters
 
     // metodos da classe
-    public void pagar() {
+    public void pagando() {
+        clientePagando.setPagando(true);
+    }
+
+    public void pagou() {
+        clientePagando.setPagando(false);
         clientePagando.setPagou(true);
     }
     // fim metodos da classe
@@ -68,15 +76,26 @@ public class Caixa implements Status, Movimento, ConstantesPagamento {
     @Override
     public Pessoa movimentar() {
         if (clientePagando == null) {
-            if (!clientesAPagar.isEmpty()){
+            if (!clientesAPagar.isEmpty()) {
                 this.clientePagando = clientesAPagar.get(0);
                 clientesAPagar.remove(0);
             }
             return null;
         } else {
-            // Aleatorio.randomico.nextInt(TEMPOMAXPAGAMENTO);
-            pagar();
-            return sair();
+            if (clientePagando.getPagou())
+                return sair();
+            if (!clientePagando.isPagando()) {
+                pagando();
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    public void run() {
+                        pagou();
+                        System.out.println("****** ACABEI DE PAGAR *******");
+                    }
+                }, TEMPOMAXPAGAMENTO);
+                timer = null;
+            }
+            return null;
         }
     }
     // fim metodos para interfaces
