@@ -46,7 +46,7 @@ public class Gerente implements Runnable, Status, ConstantesEntrada {
     public void tick(int id) {
         entraCliente();
         restaurante.movimentar();
-        restaurante.sair();
+        // restaurante.sair();
     }
 
     public void render() {
