@@ -91,9 +91,14 @@ public class Restaurante implements Status, Movimento, VerificarCadeira, Constan
         }
         Object clienteTemporario2 = salao.movimentar();
         if (clienteTemporario2 != null){
-            saida.entrar((Cliente)  clienteTemporario2);
+            saida.entrar((Cliente) clienteTemporario2);
         }
-        return saida.movimentar();
+        Object clienteTemporario3 = saida.movimentar();
+        if (clienteTemporario3 != null){
+            System.out.println("&&&&&&&&&&&&&&&&&&&&&&saiu alguem*&&&&&&&&&&&&&&&&&&");
+            return (Cliente) clienteTemporario3;
+        }
+        return null;
     }
 
     @Override
