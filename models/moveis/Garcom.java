@@ -2,19 +2,30 @@ package models.moveis;
 
 public class Garcom extends Pessoa {
 
-    private boolean servindo;
+    private boolean atendendo;
+    private boolean atendeu;
 
     public Garcom(int id) {
         super(id);
     }
 
-    public boolean getServindo() {
-        return servindo;
+    // getters setters
+    public boolean isAtendeu() {
+        return atendeu;
     }
 
-    public void setServindo(boolean servindo) {
-        this.servindo = servindo;
+    public void setAtendeu(boolean atendeu) {
+        this.atendeu = atendeu;
     }
+
+    public boolean getAtendendo() {
+        return atendendo;
+    }
+
+    public void setAtendendo(boolean atendendo) {
+        this.atendendo = atendendo;
+    }
+    // fim getters setters
 
     // metodos da interface
     @Override
@@ -24,7 +35,7 @@ public class Garcom extends Pessoa {
 
     @Override
     public int exibirStatus() {
-        System.out.println("\tESTOU " + (servindo ? "SERVINDO" : "AGUARDANDO CLIENTE"));
+        System.out.println("\tESTOU " + (atendendo ? "ATENDENDO " : "AGUARDANDO ") + "UM CLIENTE");
         return super.exibirStatus();
     }
     // fim metodos da interface
