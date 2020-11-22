@@ -48,6 +48,18 @@ public class Cliente extends Pessoa {
     }
     // fim getters setters
 
+    // metodos da classe
+    public void comendo() {
+        setComendo(true);
+        setComeu(false);
+    }
+
+    public void comeu() {
+        setComendo(false);
+        setComeu(true);
+    }
+    // fim metodos da classe
+
     // metodos interfaces
     @Override
     public void existir() {

@@ -69,12 +69,12 @@ public class Cadeira implements Status, Movimento, VerificarCadeira, ConstantesC
             if (sentado.getComeu())
                 return sair();
             if (!sentado.isComendo()) {
-                comendo();
+                sentado.comendo();
                 int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO + TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
                 timer = new Timer();
                 timer.schedule(new TimerTask() {
                     public void run() {
-                        comeu();
+                        sentado.comeu();
                         System.out.println("UM CLIENTE TERMINOU DE COMER");
                     }
                 }, tempoTotal);
