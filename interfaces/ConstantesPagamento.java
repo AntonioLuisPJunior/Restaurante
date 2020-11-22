@@ -1,5 +1,5 @@
 package interfaces;
 
 public interface ConstantesPagamento {
-    int TEMPOMAXPAGAMENTO = 3000;
+    int TEMPOMAXPAGAMENTO = 800;
 }

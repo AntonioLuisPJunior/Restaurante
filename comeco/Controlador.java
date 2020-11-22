@@ -2,10 +2,9 @@ package comeco;
 
 import compartimentos.*;
 import interfaces.*;
-import utils.*;
 import models.moveis.*;
 
-public class Gerente implements Runnable, Status, ConstantesEntrada {
+public class Controlador implements Runnable, Status, ConstantesEntrada {
 
     private boolean aberto;
     private Restaurante restaurante;
@@ -13,19 +12,14 @@ public class Gerente implements Runnable, Status, ConstantesEntrada {
 
     private int id = 0;
 
-    public Gerente() {
+    public Controlador() {
         existir();
     }
 
     public void entraCliente() {
-        try {
-            Thread.sleep(Aleatorio.randomico.nextInt(TEMPOMAXENTRADA));
-            Cliente cliente = new Cliente(id);
-            restaurante.entrar(cliente);
-            this.id++;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Cliente cliente = new Cliente(this.id);
+        restaurante.entrar(cliente);
+        this.id++;
     }
 
     // metodos da thread
@@ -43,7 +37,7 @@ public class Gerente implements Runnable, Status, ConstantesEntrada {
         this.id = restaurante.getSalao().quantidadeGarcons() + 1;
     }
 
-    public void tick(int id) {
+    public void tick() {
         entraCliente();
         restaurante.movimentar();
     }
@@ -56,10 +50,9 @@ public class Gerente implements Runnable, Status, ConstantesEntrada {
     public void run() {
         iniciar();
         while (aberto) {
-            int id = 1;
-            tick(id);
+            tick();
             try {
-                Thread.sleep(Aleatorio.randomico.nextInt(TEMPOMAXENTRADA));
+                Thread.sleep(1000);
                 render();
 
             } catch (Exception e) {
