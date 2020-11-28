@@ -3,20 +3,17 @@ package compartimentos;
 import models.estaticos.*;
 import models.moveis.*;
 import interfaces.*;
+import situacoes.*;
 import java.util.ArrayList;
 
 public class Salao implements Status, Movimento, VerificarCadeira {
 
-    private ArrayList<Garcom> garcons = new ArrayList<>();
+    public static ArrayList<Garcom> garcons = new ArrayList<>();
     private ArrayList<Mesa> mesas = new ArrayList<>();
     private ArrayList<Caixa> caixas = new ArrayList<>();
+    public static ArrayList<Atender> atendimentos = new ArrayList<>();
 
     public Salao() {
-        existir();
-        iniciar();
-    }
-
-    public Salao(boolean aberto) {
         existir();
         iniciar();
     }
@@ -26,9 +23,9 @@ public class Salao implements Status, Movimento, VerificarCadeira {
         return garcons;
     }
 
-    public void setGarcons(ArrayList<Garcom> garcons) {
-        this.garcons = garcons;
-    }
+    // public void setGarcons(ArrayList<Garcom> garcons) {
+    // this.garcons = garcons;
+    // }
 
     public ArrayList<Mesa> getMesas() {
         return mesas;
@@ -44,6 +41,10 @@ public class Salao implements Status, Movimento, VerificarCadeira {
 
     public void setCaixas(ArrayList<Caixa> caixas) {
         this.caixas = caixas;
+    }
+
+    public ArrayList<Atender> getAtendimentos() {
+        return atendimentos;
     }
     // fim getters setters
 

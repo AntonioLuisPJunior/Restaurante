@@ -40,6 +40,12 @@ public class Saida implements Status, Movimento {
         return quantidade;
     }
 
+    public int existir(boolean teste) {
+        int quantidade = filaSaida.size();
+        System.out.println("TOTAL DE PESSOAS QUE SAIRAM DO RESTAURANTE: " + sairam);
+        return quantidade;    
+    }
+
     @Override
     public void entrar(Cliente cliente) {
         System.out.println("UMA PESSOA ENTROU NA FILA PARA SAIDA DO RESTAURANTE");

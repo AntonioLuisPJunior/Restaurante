@@ -52,7 +52,7 @@ public class Controlador implements Runnable, Status, ConstantesEntrada {
         while (aberto) {
             tick();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 render();
 
             } catch (Exception e) {

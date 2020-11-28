@@ -63,6 +63,7 @@ public class Restaurante implements Status, Movimento, VerificarCadeira, Constan
         quantidade += entrada.exibirStatus();
         quantidade += salao.exibirStatus();
         System.out.println("TOTAL DE PESSOAS NO RESTAURANTE: " + quantidade);
+        System.out.println("TOTAL DE ATENDIMENTOS:           " + Salao.atendimentos.size());
         saida.exibirStatus();
         return quantidade;
     }

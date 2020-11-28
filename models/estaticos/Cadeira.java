@@ -1,8 +1,10 @@
 package models.estaticos;
 
 import models.moveis.*;
+import situacoes.Atender;
 import interfaces.*;
 import java.util.TimerTask;
+import compartimentos.Salao;
 import java.util.Timer;
 
 public class Cadeira implements Status, Movimento, VerificarCadeira, ConstantesComida {
@@ -68,13 +70,33 @@ public class Cadeira implements Status, Movimento, VerificarCadeira, ConstantesC
         if (sentado != null) {
             if (sentado.getComeu())
                 return sair();
-            if (!sentado.isComendo()) {
-                comendo();
-                int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO + TEMPOMAXATRAZENDOCOMIDA + TEMPOMAXCOMENDO;
+            if (!sentado.isSendoAtendido() && !sentado.isAtendido()) {
+                for (Garcom garcom : Salao.garcons) {
+                    if (!garcom.getAtendendo()) {
+                        garcom.atendendo();
+                        sentado.sendoAtendido();
+                        Atender atendimento = new Atender(sentado, garcom);
+                        int tempoTotal = TEMPOMAXATENDIMENTO + TEMPOMAXCOZINHANDO + TEMPOMAXATRAZENDOCOMIDA;
+                        timer = new Timer();
+                        timer.schedule(new TimerTask() {
+                            public void run() {
+                                atendimento.finalizarAtendimento();
+                                System.out.println("UM CLIENTE FOI ATENDIDO");
+                                Salao.atendimentos.add(atendimento);
+                            }
+                        }, tempoTotal);
+                        timer = null;
+                        return null;
+                    }
+                }
+            }
+            if (sentado.isAtendido() && !sentado.isComendo()) {
+                sentado.comendo();
+                int tempoTotal = TEMPOMAXCOMENDO;
                 timer = new Timer();
                 timer.schedule(new TimerTask() {
                     public void run() {
-                        comeu();
+                        sentado.comeu();
                         System.out.println("UM CLIENTE TERMINOU DE COMER");
                     }
                 }, tempoTotal);
